@@ -1,0 +1,43 @@
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.x = 0
+        self.y = 0
+        self.inventory = []
+
+    def move(self, direction):
+        if direction == "up":
+            self.y += 1
+        elif direction == "down":
+            self.y -= 1
+        elif direction == "left":
+            self.x -= 1
+        elif direction == "right":
+            self.x += 1
+
+    def pick_up_item(self, item):
+        self.inventory.append(item)
+        print(f"{self.name} picked up {item}.")
+
+    def display_inventory(self):
+        print(f"{self.name}'s Inventory:")
+        if len(self.inventory) == 0:
+            print("Empty")
+        else:
+            for item in self.inventory:
+                print(item)
+        print("")
+
+# Create player
+player = Player("John")
+
+# Perform actions
+player.move("up")
+player.pick_up_item("Sword")
+player.move("right")
+player.pick_up_item("Shield")
+player.move("up")
+player.pick_up_item("Potion")
+
+# Display player inventory
+player.display_inventory()
